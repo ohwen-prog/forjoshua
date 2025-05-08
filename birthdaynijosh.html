@@ -1,0 +1,172 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, #3a1c71, #d76d77, #ffaf7b);
+      background-size: 600% 600%;
+      animation: gradientShift 15s ease infinite;
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 4rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    p {
+      font-size: 1.4rem;
+      color: #fff3f3;
+      max-width: 80%;
+    }
+
+    .cake {
+      font-size: 5rem;
+      animation: bounce 1.5s infinite;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    button {
+      background: #ffffff;
+      color: #ff4081;
+      padding: 15px 30px;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 50px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: 0.3s;
+      margin-top: 30px;
+    }
+
+    button:hover {
+      background: #ff80ab;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 20px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    #message {
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin-top: 20px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    }
+
+    video {
+      margin-top: 20px;
+      border: 5px solid white;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      max-width: 90%;
+      transition: all 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: fall 3s linear infinite;
+      opacity: 0.9;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Music -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-happyrock.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Greeting -->
+  <div class="cake">🎂</div>
+  <h1>Happy Birthday, My Joshua, Joshuu, Bakla, Darling!</h1>
+  <p>Grabe, nami gid tani mag-celebrate sang birthday mo nga upod ta, pero bisan layo ka subong, you’re always in my heart, char! I miss our late-night tambays and endless chika sessions sa school — those are the moments nga hindi gid mapalitan. 
+    You’ve been my ride or die, my partner sa tanan during first sem. And I will always be grateful for you. On your special day, I’m sending all the love and this simple HTML as my gift. I hope the world gives you everything nga deserve mo. 
+    I miss you so much and I can’t wait for the time nga magka-kita ta liwat.
+    Love you, miss you, and Happy Birthday! </p>
+
+  <!-- Surprise Button -->
+  <button onclick="revealSurprise()">Click for a Surprise 🎁</button>
+
+  <!-- Hidden Elements -->
+  <div id="message" class="hidden">Time and distance may keep us apart, but you’re always in my thoughts. I hope your special day is filled with all the love, happiness, and joy you truly deserve. You’ve always been there for me, and I’m so grateful for your friendship.🎉</div>
+  <video id="video" class="hidden" width="400" controls>
+    <source src="ce307c15-db3a-48ba-b1f7-77d8ef0a178b.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    function createConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = Math.random() * -100 + 'px';
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.body.appendChild(confetti);
+      }
+    }
+
+    function revealSurprise() {
+      document.getElementById('message').style.display = 'block';
+      const video = document.getElementById('video');
+      video.style.display = 'block';
+      video.style.width = '80%';  // Increase video size
+    }
+
+    createConfetti();
+  </script>
+</body>
+</html>
